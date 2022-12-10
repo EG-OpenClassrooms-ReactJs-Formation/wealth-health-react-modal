@@ -1,10 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-import { ExampleComponent } from 'wealth-health-react-modal'
-import 'wealth-health-react-modal/dist/index.css'
+import Modal from 'wealth-health-react-modal'
+import styles from 'wealth-health-react-modal/dist/index.css'
+
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
-}
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <main>
+      <button className={styles.primaryBtn} onClick={() => setIsOpen(true)}>
+        Open Modal
+      </button>
+      {isOpen && <Modal setIsOpen={setIsOpen} title={"Form sended"} content={"The employee has been created"}/>}
+    </main>
+  );
+};
 
 export default App
+
+
